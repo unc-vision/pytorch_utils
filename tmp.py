@@ -5,6 +5,7 @@ import torch
 
 def a(  b):
 	print(b )
+   print(     b)   
 
 
 
