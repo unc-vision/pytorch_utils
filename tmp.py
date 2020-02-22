@@ -1,17 +1,10 @@
-
-
 import torch
 
 
-def a(  b):
-	print(b )
-   print(     b)   
-
+def a(b):
+    print(b)
+    print(b)
 
 
 if __name__ == '__main__':
-	a('test')
-
-
-
-
+    a('test')
