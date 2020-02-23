@@ -1,0 +1,29 @@
+language: python
+
+python:
+  - "3.7"
+
+dist: bionic
+
+install:
+  - sudo apt-get update
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - source "$HOME/miniconda/etc/profile.d/conda.sh"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+
+  # Replace dep1 dep2 ... with your dependencies
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pytest==5.0.1 yapf==0.28.0
+  - conda activate test-environment
+  - conda install pytorch==1.4.0 torchvision==0.5.0 -c pytorch 
+  # - python setup.py install
+  # - python setup.py build develop
+
+script:
+  # run tests
+  - pytest
+
